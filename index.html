@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- el bloque por defecto salen con ! TAB en VSC-->
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> Mi pagina WEB </title>
+        <link href="resources/styles.css" rel = "stylesheet" type ="text/css"/>
+        <!--
+        <style type ="text/css">
+            p { color:red"
+                font-family: Verdana, Geneva. Tahoma, sans-serif
+            }        
+        </style>
+        -->
+    </head>
+    <body>
+        <h1>Recursos web del ciclo 3</h1>
+        <!--de h1 a h6-->
+        <div class = "Contenido">
+            <h2>Contenido</h2>
+            <p>
+                Esta es una pagina web de ejemplo cuyp contenido se hara con las etiquetas
+                mas comunes de HTML
+                <br>
+                <br>
+                Span sirve para <span style = "color:red"> subrayar un texto rojo</span>
+                <br>
+                <br>
+
+                Estas etiquetas permiten hacer una lista de elementos
+            </p>
+            <ul>
+                <li> DOCUMENTACION DE DJANGO</li>
+                <ul>
+                    <li>Django <a href="https://docs.djangoproject.com/en/4.0/ref/settings/#databases" target="_blank" > DJANGO </a></li>
+                    <li>Rest framework simple JWT <a href="https://django-rest-framework-simplejwt.readthedocs.io/en/latest/" target="_blank" > simple-JWT </a></li>
+                    <li>authorization <a href="https://docs.djangoproject.com/en/4.0/ref/contrib/auth/" target="_blank" > authorization </a></li>
+                    <li>Django Models <a href="https://docs.djangoproject.com/en/4.0/topics/db/models/" target="_blank" > Models </a></li>
+                    <li>Vistas <a href="https://www.django-rest-framework.org/api-guide/generic-views/#retrieveapiview" target="_blank" > Views </a></li>
+                    <li>Vistas <a href="https://pypi.org/project/psycopg2/" target="_blank" > Views </a></li>
+                    
+                </ul>
+                
+                <li> Paginas para hacer Mocukps </li>
+                <ul>
+                    <!--es mas facil cambiar el vinculo si esta despues de las props de la etiqueta-->
+                    <li>Figma <a target="_blank" href="https://www.figma.com/" > FIGMA </a></li>
+                    <li>adobe <a target="_blank" href="https://www.adobe.com/products/xd.html" > ADOBE </a></li>
+                    <li>Moqups <a target="_blank" href="https://moqups.com/es/" > MOQUPS </a></li>
+                    <li>Mockflow <a target="_blank" href="https://www.mockflow.com/pricing/" > MOCKFLOW </a></li>
+                    <li>Balsamiq <a target="_blank" href="https://balsamiq.cloud/" > BALSAMIQ </a></li>
+                </ul>
+                
+                <li> DOCUMENTACION DE HTML Y CSS </li>
+                <ul>
+                    <!--es mas facil cambiar el vinculo si esta despues de las props de la etiqueta-->
+                    <li>Vue JS <a target="_blank" href="https://vuejs.org/guide/introduction.html" > VUEJS </a></li>
+                    <li>W3schools. Etiquetas HTML <a target="_blank" href="https://www.w3schools.com/tags/default.asp" >  </a></li>
+                    <li>W3schools. CSS <a target="_blank" href="https://www.w3schools.com/cssref/default.asp" >  </a></li>
+                    <li>El maquetador web <a target="_blank" href="https://www.elmaquetadorweb.com/2018/05/jerarquia-css-como-evitar-el-uso-de.html" > MOQUPS </a></li>
+                    <li>Paleta de colores <a target="_blank" href="https://color.adobe.com/es/create/color-contrast-analyzer" > PALETAS DE COLORES </a></li>
+                </ul>
+                
+                <li>Django <a target="_blank" href="https://balsamiq.cloud/" > BALSAMIQ </a></li>
+                <li> Listas</li>
+                <li> Imagenes</li>
+                <li> Recursos de Youtube</li>
+                <ul>
+                    <li>Aprende HTML con HolaMundo <a target="_blank" href="https://www.youtube.com/watch?v=MJkdaVFHrto"  > HolaMundo </a></li>
+                    <li>Los Patrones de Arquitectura y su Clasificación <a target="_blank" href="https://www.youtube.com/watch?v=X3FNtc1XC78"  > PATRONES </a></li>
+                    <li>estilos de arquitectura de software <a target="_blank" href="https://www.youtube.com/watch?v=qGu8cYePdyU"  > estilos de arquitectura </a></li>
+                    <li>Referencia vacia  <a target="_blank" href=""  > EMPTY </a></li>
+                </ul>
+            </ul>
+        </div>
+        <hr>
+        <!--linea horizontal de division-->
+        <div class = "Imagen">
+            <img src="resources/nevadoruiz.jpeg">
+            <!--<img src="resources/nevadoruiz.jpeg"/> autocontenida-->
+            <form action="/formulario" method="GET"> <!--POST acepta mas datos-->
+                <label for="nombre" >Nombre</label>
+                <!--recibe el foco del mouse en el campo de texto-->
+                <input value="Chanchito" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+                <!--lo que guarda en name es la llave, el valor es el contenido del campo de texto
+                placeholder es una sugerencia de lo que debe llenarse en el input
+                type: submit vuelve este input un boton, text es por defecto, email, password,radio,checkbox,file,
+                -->
+                <br>
+                <label for="apellido" >Nombre</label>
+                <!--recibe el foco del mouse en el campo de texto-->
+                <input value="Feliz" type="text" id="apellido" name="apellido" placeholder="Apellido"/>
+                <br>
+                <label for="comentario" >Comentario</label>
+                <textarea cols=50 rows=10 id="comentario" name="comentario" placeholder="Ingrese comentario">Comentario por defecto</textarea>
+                <br>
+                <input type="submit" id="guardar" name="guardar" placeholder="Nombre"/>
+                
+            </form>
+        </div>
+
+        <div class = "Conclusion">
+            <p>
+                <!--anchor, a, sirve para direccionar direcciones con href-->
+                Mas informacion en <a href="https://www.google.com" target="_blank" > google </a>, alli hay mas datos
+            </p>
+        </div>
+
+        
+    </body>           
+</html>

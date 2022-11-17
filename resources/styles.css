@@ -1,0 +1,48 @@
+body {
+    width: 1100;
+    margin: 10px auto;
+    /*margin: 10px 5px 5px 5px;*/
+    background-color: gray;
+    padding: 0px 20px 20px 20px;
+    border: 3px solid black;
+}
+
+h1{
+    color: blue;
+    text-align: center;
+    font-family: cursive;
+}
+
+.Contenido{
+    color:gray;
+    border-radius: 10px;
+    margin 0px 40px 0px 30px;
+    padding: 10px 40px 0px 30px;
+    background-color: white;
+}
+
+.Imagen h3{
+    color:white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html{
+    background-color: pink;
+}
+.Imagen img{
+    height: 400px;
+    display: block;
+    border-radius: 40px;
+    border: 3px solid red;
+    margin: 20 px auto 20px auto;
+}
+
+.Conclusion{
+    color: green;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 15px;
+    margin: 0px 40px 0px 40px;
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(192, 26, 26);
+}
