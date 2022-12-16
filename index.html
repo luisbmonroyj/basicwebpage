@@ -1,11 +1,18 @@
 <!DOCTYPE html>
+<!-- html trae la ultima version de html disponible-->
+
 <!-- el bloque por defecto salen con ! TAB en VSC-->
-<html>
+<html lang="es">
     <head>
+    <!--head es el encabezado de la pagina-->    
+        
         <meta charset="utf-8"/>
+        <!-- establece unos metadatos, en este caso el sistema de caracteres que se usa-->
         <title> Mi pagina WEB </title>
+        <!--title es lo que aparece en la pestana del navegador-->
+        <!--Los estilos se van a configurar externamente-->
         <link href="resources/styles.css" rel = "stylesheet" type ="text/css"/>
-        <!--
+        <!-- modo de agregar CSS en linea
         <style type ="text/css">
             p { color:red"
                 font-family: Verdana, Geneva. Tahoma, sans-serif
@@ -14,19 +21,36 @@
         -->
     </head>
     <body>
-        <h1>Recursos web del ciclo 3</h1>
-        <!--de h1 a h6-->
+        <header>
+            <h1>Recursos web que yo uso</h1>
+            <!--Tamanos de titulos, de h1 a h6-->
+        </header>
         <div class = "Contenido">
+            <!-- nav hace una barra de navegacion-->
+            <nav>
+                <a class = "BarraBotones" href="/html/">HTML</a> |
+                <a class = "BarraBotones" href="/css/">CSS</a> |
+                <a class = "BarraBotones" href="/js/">JavaScript</a> |
+                <a class = "BarraBotones" href="/python/">Python</a>
+            </nav>
+            <!--class = "algo" es un atributo que se lo pone a esta etiqueta div, a "algo se le ponen mas caracteristicas"-->
             <h2>Contenido</h2>
             <p>
-                Esta es una pagina web de ejemplo cuyp contenido se hara con las etiquetas
+                Esta es una pagina web de ejemplo cuyo contenido se hara con las etiquetas
                 mas comunes de HTML
                 <br>
+                p: es la etiqueta para empezar un parrafo
                 <br>
-                Span sirve para <span style = "color:red"> subrayar un texto rojo</span>
+                span: sirve para <span style = "color:red"> subrayar un texto con algun color (rojo)</span>
+                <br>
+                strong: sirve para resaltar <strong> UN TEXTO </strong>  en negrilla 
+                <br>
+                <hr>
+                hr: muestra una linea horizontal
+                <br>
+                br: hace un salto de linea                
                 <br>
                 <br>
-
                 Estas etiquetas permiten hacer una lista de elementos
             </p>
             <ul>
@@ -38,9 +62,8 @@
                     <li>Django Models <a href="https://docs.djangoproject.com/en/4.0/topics/db/models/" target="_blank" > Models </a></li>
                     <li>Vistas <a href="https://www.django-rest-framework.org/api-guide/generic-views/#retrieveapiview" target="_blank" > Views </a></li>
                     <li>Vistas <a href="https://pypi.org/project/psycopg2/" target="_blank" > Views </a></li>
-                    
                 </ul>
-                
+                <br>
                 <li> Paginas para hacer Mocukps </li>
                 <ul>
                     <!--es mas facil cambiar el vinculo si esta despues de las props de la etiqueta-->
@@ -50,55 +73,114 @@
                     <li>Mockflow <a target="_blank" href="https://www.mockflow.com/pricing/" > MOCKFLOW </a></li>
                     <li>Balsamiq <a target="_blank" href="https://balsamiq.cloud/" > BALSAMIQ </a></li>
                 </ul>
-                
+                <br>
                 <li> DOCUMENTACION DE HTML Y CSS </li>
                 <ul>
-                    <!--es mas facil cambiar el vinculo si esta despues de las props de la etiqueta-->
-                    <li>Vue JS <a target="_blank" href="https://vuejs.org/guide/introduction.html" > VUEJS </a></li>
-                    <li>W3schools. Etiquetas HTML <a target="_blank" href="https://www.w3schools.com/tags/default.asp" >  </a></li>
-                    <li>W3schools. CSS <a target="_blank" href="https://www.w3schools.com/cssref/default.asp" >  </a></li>
-                    <li>El maquetador web <a target="_blank" href="https://www.elmaquetadorweb.com/2018/05/jerarquia-css-como-evitar-el-uso-de.html" > MOQUPS </a></li>
-                    <li>Paleta de colores <a target="_blank" href="https://color.adobe.com/es/create/color-contrast-analyzer" > PALETAS DE COLORES </a></li>
+                    <li>
+                        HTML
+                    </li>
+                    <ul>
+                        <!--es mas facil cambiar el vinculo si esta despues de las props de la etiqueta-->
+                        <li>Vue JS <a target="_blank" href="https://vuejs.org/guide/introduction.html" > VUEJS </a></li>
+                        <li>W3schools. Etiquetas HTML <a target="_blank" href="https://www.w3schools.com/tags/default.asp" > W3  </a></li>
+                        <li>Make It Real <a target="_blank" href="https://guias.makeitreal.camp/html-y-css/introduccion-a-html" > MIR </a></li>
+                        <li>Documentacion Mozilla  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML" > Mozilla </a></li>
+                        <li>NodeSchool  <a target="_blank" href="https://nodeschool.io" > NodeSchool </a></li>
+                    </ul>
+                    <li>
+                        CSS
+                    </li>
+                    <ul>
+                        <li>W3schools. CSS <a target="_blank" href="https://www.w3schools.com/cssref/default.asp" > CSS </a></li>
+                        <li>CSS Tricks <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" > Flexbox </a></li>
+                        <li>FlexBox game <a target="_blank" href="https://flexboxfroggy.com" > Flexbox Froggy</a></li>
+                        <li>El maquetador web <a target="_blank" href="https://www.elmaquetadorweb.com/2018/05/jerarquia-css-como-evitar-el-uso-de.html" > MOQUPS </a></li>
+                        <li>Paleta de colores <a target="_blank" href="https://color.adobe.com/es/create/color-contrast-analyzer" > PALETAS DE COLORES </a></li>
+                        
+                    </ul>
                 </ul>
-                
-                <li>Django <a target="_blank" href="https://balsamiq.cloud/" > BALSAMIQ </a></li>
-                <li> Listas</li>
-                <li> Imagenes</li>
+                <br>
+                <!--
+                    <li>Django <a target="_blank" href="https://balsamiq.cloud/" > BALSAMIQ </a></li>
+                -->
                 <li> Recursos de Youtube</li>
                 <ul>
                     <li>Aprende HTML con HolaMundo <a target="_blank" href="https://www.youtube.com/watch?v=MJkdaVFHrto"  > HolaMundo </a></li>
+                    <li>Make It Real  <a target="_blank" href="https://www.youtube.com/watch?v=01kveX7fueA&list=PLxyfMWnjW2kshpGRqh4LlTDPuPSoc5dmf&index=1"  > MIR </a></li>
+                    <li>DesarrolloWeb.com  <a target="_blank" href="https://www.youtube.com/playlist?list=PLIcuwIrm4rKc2cl2ASgt6yK1I9hkE4Bk4"  > DesWEB </a></li>
+                    
                     <li>Los Patrones de Arquitectura y su Clasificación <a target="_blank" href="https://www.youtube.com/watch?v=X3FNtc1XC78"  > PATRONES </a></li>
                     <li>estilos de arquitectura de software <a target="_blank" href="https://www.youtube.com/watch?v=qGu8cYePdyU"  > estilos de arquitectura </a></li>
                     <li>Referencia vacia  <a target="_blank" href=""  > EMPTY </a></li>
                 </ul>
-            </ul>
+                <br>
+                <ul>
+                    <div class = "Imagen">
+                        <h3> Este titulo h3 esta estilizado individualmente para la class Imagen</h3>
+                        <br>
+                        <img src="resources/nevadoruiz.jpeg">
+                        <!--<img src="resources/nevadoruiz.jpeg"/> autocontenida-->
+                    </div>
+                </ul>
+                <li> Listas</li>
+                <li> Imagenes</li>
+                <li> Formulario</li>
+                    <ul>
+                    <div>    
+                        <form action="/formulario" method="GET"> <!--POST acepta mas datos-->
+                            <label for="nombre" >Nombre</label>
+                            <!--recibe el foco del mouse en el campo de texto-->
+                            <input value="Introduzca nombre" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+                            <!--lo que guarda en name es la llave, el valor es el contenido del campo de texto
+                                placeholder es una sugerencia de lo que debe llenarse en el input
+                                type: submit vuelve este input un boton, text es por defecto, email, password,radio,checkbox,file,
+                            -->
+                            <br>
+                            <label for="apellido" >Apellido</label>
+                            <!--recibe el foco del mouse en el campo de texto-->
+                            <input value="Introduzca apellido" type="text" id="apellido" name="apellido" placeholder="Apellido"/>
+                            <br>
+                            <label for="comentario" >Comentario</label>
+                            <textarea cols=50 rows=10 id="comentario" name="comentario" placeholder="Ingrese comentario">Comentario por defecto</textarea>
+                            <br>
+                            <input type="submit" id="guardar" name="guardar" placeholder="Guardar"/>
+                            
+                        </form>
+                    </div>
+                </ul>
+                <li> Tabla</li>
+                    <br>
+                <ul>
+                    <table>
+                        <!--tr hace una fila en la tabla-->
+                        <tr>
+                        <!--th hace los titulos de la tabla-->  
+                            <th>Columna1</th>
+                            <th>Columna2</th>
+                            <th>Columna3</th>
+                            <th>Columna4</th>
+                        <tr>
+                            <!--td introduce datos por filas-->  
+                            <td>DatoCol1 fila1</td>
+                            <td>DatoCol2 fila1</td>
+                            <td colspan="2">Este dato Ocupa 2 columnas en la fila 1</td>
+                            <tr>
+                                <td>DatoCol1 fila2</td>
+                            <td>DatoCol2 fila2</td>
+                            <td rowspan="2">Este dato Ocupa 2 filas en col3</td>
+                            <td>DatoCol4 fila2</td>
+                        <tr>
+                            <td>DatoCol1 fila3</td>
+                            <td>DatoCol2 fila3</td>
+                            <td>DatoCol4 fila3!</td>
+                    </table>
+                </ul>
+
         </div>
+        <!--Table hace una estructura de filas y columnas-->
         <hr>
         <!--linea horizontal de division-->
-        <div class = "Imagen">
-            <img src="resources/nevadoruiz.jpeg">
-            <!--<img src="resources/nevadoruiz.jpeg"/> autocontenida-->
-            <form action="/formulario" method="GET"> <!--POST acepta mas datos-->
-                <label for="nombre" >Nombre</label>
-                <!--recibe el foco del mouse en el campo de texto-->
-                <input value="Chanchito" type="text" id="nombre" name="nombre" placeholder="Nombre"/>
-                <!--lo que guarda en name es la llave, el valor es el contenido del campo de texto
-                placeholder es una sugerencia de lo que debe llenarse en el input
-                type: submit vuelve este input un boton, text es por defecto, email, password,radio,checkbox,file,
-                -->
-                <br>
-                <label for="apellido" >Nombre</label>
-                <!--recibe el foco del mouse en el campo de texto-->
-                <input value="Feliz" type="text" id="apellido" name="apellido" placeholder="Apellido"/>
-                <br>
-                <label for="comentario" >Comentario</label>
-                <textarea cols=50 rows=10 id="comentario" name="comentario" placeholder="Ingrese comentario">Comentario por defecto</textarea>
-                <br>
-                <input type="submit" id="guardar" name="guardar" placeholder="Nombre"/>
-                
-            </form>
-        </div>
-
+        
         <div class = "Conclusion">
             <p>
                 <!--anchor, a, sirve para direccionar direcciones con href-->

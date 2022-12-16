@@ -1,7 +1,11 @@
+html{
+    background-color: pink;
+}
+
 body {
     width: 1100;
     margin: 10px auto;
-    /*margin: 10px 5px 5px 5px;*/
+    margin: 10px 5px 5px 5px;
     background-color: gray;
     padding: 0px 20px 20px 20px;
     border: 3px solid black;
@@ -13,6 +17,22 @@ h1{
     font-family: cursive;
 }
 
+.BarraBotones:link{
+    color: rgb(41, 16, 153);
+}
+
+.BarraBotones: :visited{
+    color: green;
+
+}
+
+.BarraBotones:hover{
+    color:red;
+}
+
+.BarraBotones:active{
+    color:blueviolet;
+}
 .Contenido{
     color:gray;
     border-radius: 10px;
@@ -21,14 +41,21 @@ h1{
     background-color: white;
 }
 
-.Imagen h3{
-    color:white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
 }
 
-html{
-    background-color: pink;
+ul {
+    margin-left: 20px;
+    
 }
+.Imagen h3{
+    color:yellow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
 .Imagen img{
     height: 400px;
     display: block;
