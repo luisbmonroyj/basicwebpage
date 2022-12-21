@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <script type="text/javascript">
+        /*
+        Funcion asincrona que trae un json de la api de la pagina web 
+        */
+        async function getCountry(){
+            const answer =  await fetch("https://api.nationalize.io?name=luis");
+            if (!answer.ok){
+                let message = "404 not found";
+                alert(message);
+                throw new Error(message);
+            }
+            const country = answer.json();
+            return country;
+        }
+        /*
+        funcion que cambia el contenido del ID "nombre" (etiqueta del body) por el resultado de name
+        */
+        function showName(name){
+            document.getElementById("nombre").innerHTML = name.country[0].country_id;
+        }
+        /*
+        llamado de la funcion getCountry que al ejecutar showName lo hace con el JSON que retorna getCountry
+        */
+        getCountry().then(showName);
+
+    </script>   
+</head>
+<body>
+    <p id = nombre> Mostrando nombre </p>
+    <script>
+        showName("Nombre de prueba");
+    </script>
+</body>
+</html>
