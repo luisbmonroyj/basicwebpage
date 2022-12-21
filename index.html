@@ -8,6 +8,8 @@
         
         <meta charset="utf-8"/>
         <!-- establece unos metadatos, en este caso el sistema de caracteres que se usa-->
+        <meta name="viewport" content="width=device-width">
+        <!-- establece unos metadatos, en este que el content se renderiza al tamano del viewport-->
         <title> Mi pagina WEB </title>
         <!--title es lo que aparece en la pestana del navegador-->
         <!--Los estilos se van a configurar externamente-->
@@ -22,19 +24,20 @@
     </head>
     <body>
         <header>
-            <h1>Recursos web que yo uso</h1>
+            <h1>Pagina WEB con ejercicios propios de HTML, CSS y JavaScript</h1>
             <!--Tamanos de titulos, de h1 a h6-->
         </header>
         <div class = "Contenido">
-            <!-- nav hace una barra de navegacion-->
-            <nav>
-                <a class = "BarraBotones" href="/html/">HTML</a> |
-                <a class = "BarraBotones" href="/css.html">CSS</a> |
-                <a class = "BarraBotones" href="/js.html">JavaScript</a> |
-                <a class = "BarraBotones" href="/python/">Python</a>
+            <!-- nav hace una barra de navegacion
+                <a class = "barraBotones" href="/html/">HTML</a> |
+            -->
+            <nav class = "nav-bar">
+                <a class = "barraBotones" href="/js.html">JavaScript</a> |
+                <a class = "barraBotones" href="/css.html">CSS</a> |
+                <a class = "barraBotones" href="/python/">Python</a>
             </nav>
             <!--class = "algo" es un atributo que se lo pone a esta etiqueta div, a "algo se le ponen mas caracteristicas"-->
-            <h2>Contenido</h2>
+            <h2 class = "textShadow">Contenido</h2>
             <p>
                 Esta es una pagina web de ejemplo cuyo contenido se hara con las etiquetas
                 mas comunes de HTML
@@ -94,6 +97,8 @@
                         <li>W3schools. CSS <a target="_blank" href="https://www.w3schools.com/cssref/default.asp" > CSS </a></li>
                         <li>CSS Tricks <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" > Flexbox </a></li>
                         <li>FlexBox game <a target="_blank" href="https://flexboxfroggy.com" > Flexbox Froggy</a></li>
+                        <li>CodePen <a target="_blank" href="https://codepen.io" > CodePen</a></li>
+                        <li>Animate style <a target="_blank" href="https://animate.style" > Animate</a></li>
                         <li>El maquetador web <a target="_blank" href="https://www.elmaquetadorweb.com/2018/05/jerarquia-css-como-evitar-el-uso-de.html" > MOQUPS </a></li>
                         <li>Paleta de colores <a target="_blank" href="https://color.adobe.com/es/create/color-contrast-analyzer" > PALETAS DE COLORES </a></li>
                         
@@ -180,11 +185,20 @@
         <!--Table hace una estructura de filas y columnas-->
         <hr>
         <!--linea horizontal de division-->
-        
+        <div class = "gradienteRadial">
+            <p>
+                Este es un div con fondo gradiente radial
+            </p>
+        </div>
+
         <div class = "Conclusion">
             <p>
                 <!--anchor, a, sirve para direccionar direcciones con href-->
                 Mas informacion en <a href="https://www.google.com" target="_blank" > google </a>, alli hay mas datos
+            </p>
+            <br>
+            <p>
+                Este es un div con fondo gradiente lineal
             </p>
         </div>
 

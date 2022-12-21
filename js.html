@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript</title>
     <script type="text/javascript">
+        nombre = prompt("Escribe tu nombre");
+        api = "https://api.nationalize.io?name=";
+        fetchIt = api+nombre;
         /*
         Funcion asincrona que trae un json de la api de la pagina web 
         */
         async function getCountry(){
-            const answer =  await fetch("https://api.nationalize.io?name=luis");
+            const answer =  await fetch(fetchIt);
             if (!answer.ok){
                 let message = "404 not found";
                 alert(message);
@@ -33,6 +36,8 @@
     </script>   
 </head>
 <body>
+    <h1>Ejemplo de funcion asincrona</h1>
+    <h2>El pais donde es mas comun el nombre es: </h2>
     <p id = nombre> Mostrando nombre </p>
     <script>
         showName("Nombre de prueba");

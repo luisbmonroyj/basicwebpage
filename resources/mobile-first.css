@@ -1,0 +1,42 @@
+/*mobile*/
+h1{
+    font-size: 21px;
+}
+body{
+    font-size: 14px;
+}
+
+/*tablets*/
+@media (min-width:768px){
+    h1{
+        font-size: 30px;
+    }
+        body{
+        font-size: 20px;
+    }
+    
+}
+
+/*desktop*/
+@media (min-width:992px){
+    h1{
+        font-size: 38px;
+    }
+    body{
+        font-size: 25px;
+    }
+    
+}
+
+/*wide screens*/
+@media (min-width:1200px){
+    h1{
+        font-size: 45px;
+    }
+    body{
+        font-size: 30px;
+    }
+    
+}
+
+

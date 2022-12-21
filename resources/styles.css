@@ -17,26 +17,44 @@ h1{
     font-family: cursive;
 }
 
-.BarraBotones:link{
-    color: rgb(41, 16, 153);
+.nav-bar{
+    padding: 40px;
+    background: #454141;
+    margin: 25px auto ;
+    width: auto;
+    height: 20px;
+    border-radius: 10px; 
+    border: 2px solid #666;
+    box-shadow: 7px 7px 15px #d40909;
 }
 
-.BarraBotones: :visited{
+.textShadow{
+    font-size: 20px;
+    padding:20px;
+    text-align: center;
+    text-shadow: 5px 5px 5px #2d45ae;
+}
+
+.barraBotones:link{
+    color: rgb(55, 16, 230);
+}
+
+.barraBotones:visited{
     color: green;
 
 }
 
-.BarraBotones:hover{
+.barraBotones:hover{
     color:red;
 }
 
-.BarraBotones:active{
+.barraBotones:active{
     color:blueviolet;
 }
 .Contenido{
     color:gray;
     border-radius: 10px;
-    margin 0px 40px 0px 30px;
+    margin: 0px 40px 0px 30px;
     padding: 10px 40px 0px 30px;
     background-color: white;
 }
@@ -67,9 +85,28 @@ ul {
 .Conclusion{
     color: green;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
     border-radius: 15px;
     margin: 0px 40px 0px 40px;
-    padding: 10px 10px 10px 10px;
-    background-color: rgb(192, 26, 26);
+    padding: 10px 200px 100px 200px;
+    /*arriba derecha abajo izquierda*/
+    /*background-color: rgb(192, 26, 26);*/
+    background: linear-gradient(to right,red,yellow);
+
+}
+
+.gradienteRadial{
+    color: rgb(10, 21, 226);
+    font-size: 18px;
+    text-align: right;
+    border-radius: 15px;
+    margin: 0px 40px 0px 40px;
+    padding: 10px 200px 100px 200px;
+    /*
+    arriba derecha abajo izquierda
+    background: radial-gradient(blue,cyan);
+    background: radial-gradient(at 10px, 5px, blue,cyan);
+    */
+    background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+
 }
