@@ -20,38 +20,40 @@
             <div class="col-md-6 offset-md-3">
                 <form action="" v-on:submit.prevent="processSignUp" class="row g-3">
                     <div class="row mb-3">
-                        <input type="number" class="form-control borde" v-model="user.id" placeholder="id">
+                        <input type="number" class="form-control borde" id="user.id" v-model="user.id" placeholder="id"
+                        onblur="positiveNumber(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.name" v-model="user.name"
-                            placeholder="First name" onkeyup="setUsername()">
+                            placeholder="First name" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.middlename" v-model="user.middlename"
-                            placeholder="Middle Name" onkeyup="setUsername()">
+                            placeholder="Middle Name" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.lastname" v-model="user.lastname"
-                            placeholder="Last name" onkeyup="setUsername()">
+                            placeholder="Last name" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
-                        <input type="email" class="form-control borde" id="user.email" v-model="user.email"
-                            placeholder="email">
+                        <input type="text" class="form-control borde" id="user.e-mail" v-model="user.e-mail"
+                            placeholder="e-mail" onkeyup="oneString(id)" onblur="validEmail()">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.address" v-model="user.address"
                             placeholder="address">
                     </div>
                     <div class="row mb-3">
-                        <input type="number" class="form-control borde" v-model="user.phone" placeholder="phone">
+                        <input type="text" class="form-control borde" id="user.phone" v-model="user.phone" 
+                        placeholder="phone" onkeyup="validPhone(id,10)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.username" v-model="user.username"
                             placeholder="username">
                     </div>
                     <div class="row mb-3">
-                        <input type="password" class="form-control borde" v-model="user.password"
-                            placeholder="Password">
+                        <input type="password" class="form-control borde" id="user.password" v-model="user.password"
+                            placeholder="Password" onblur="securePassword(10,2)">
                     </div>
                     <div class="row mb-4">
                         <input type="submit" class="btn btn-dark borde" value="Register">
@@ -61,7 +63,15 @@
         </div>
     </div>
     <script>
+        function positiveNumber(id) {
+            //id numbers must be positive
+            idNumber = document.getElementById(id);
+            if (idNumber.value < 0){
+                idNumber.value *= -1;
+            }
+        }
         function setUsername() {
+            //This method suggests an username based on the user's name
         try {
             const name = oneString("user.name");
             const middlename = oneString("user.middlename");
@@ -80,11 +90,74 @@
         }
         }
         function oneString(stringWithSpace) {
+            //this method erases spaces in a field
             let name = document.getElementById(stringWithSpace);
             let uniqueName = name.value.split(" ");
             name.value = uniqueName[0];  
             return name;
         }
+        function validEmail() {
+            //this method validates a correct email format
+            /*anycharacters + optional ("-" or "." ) + anycharacters + mandatory(@) + 
+            anycharacters +  mandatory(.) + 2 or 3 characters 
+            */
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let email = oneString('user.e-mail');
+            email.value = email.value.toLowerCase();
+            if (email.value.match(regex)==null){
+                alert("no tiene la estructura de un email valido: usuario@servidor.extension");
+            }
+        }
+        function nameFormat(upperCaseName){
+            //this method formats names to be capitalized
+            let name = document.getElementById(upperCaseName);
+            name.value = name.value.toLowerCase();
+            name.value = name.value.replace(name.value.charAt(0),name.value.charAt(0).toUpperCase());
+        }
+        function validPhone(phone,limit){
+            //this method formats the length and characters of a valid phone number
+            let phoneNumber = document.getElementById(phone);
+            let validPhone = "";
+            if(phoneNumber.value.length>limit){
+                alert("Un numero de telefono debe tener " + limit + " digitos");
+                //If the limit is reached, the last character is removed
+                validPhone = phoneNumber.value.slice(0,phoneNumber.value.length-1);
+            }
+            else{
+                //this is a regex for the digits
+                const digits = /[0-9]/;
+                //if the character at the last position is a digit, keep it
+                if (phoneNumber.value.charAt(phoneNumber.value.length-1).search(digits)!=-1){
+                    validPhone += phoneNumber.value;
+                }
+                else{
+                    //In the other case the last character is removed
+                    validPhone = phoneNumber.value.slice(0,phoneNumber.value.length-1);
+                }
+            }
+            phoneNumber.value = validPhone;
+        }
+        function securePassword(length,specialCharCount) {
+            /*this method validates a secure password
+            must have at least <length>= 10 characters
+            must have at least <specialCharCount> = 2 special characters
+                I don't know how to pass the arguments to a regex in JS
+            */
+           let regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
+           let regex2 = /^(?=.*?[#?!@$ %^&*-]).{2,}/;
+           const alerta = "la contrasena debe tener: \nal menos 10 caracteres, \n"+
+                "al menos una mayuscula, \nal menos una minuscula,\nal menos un digito \n"+
+                "al menos 2 caracteres especiales: # ? ! @ $ % ^ & * - \n";
+            let password = document.getElementById('user.password');
+            if( password.value.length<length||(password.value.match(regex))==null||(password.value.match(regex2))==null){
+                alert(alerta);
+            }
+            /*
+            else
+                console.log(password.value.match(regex));
+            */
+        }
+        
         
         </script>
 </body>
