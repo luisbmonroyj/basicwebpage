@@ -20,8 +20,8 @@
             <div class="col-md-6 offset-md-3">
                 <form action="" v-on:submit.prevent="processSignUp" class="row g-3">
                     <div class="row mb-3">
-                        <input type="number" class="form-control borde" id="user.id" v-model="user.id" placeholder="id"
-                        onblur="positiveNumber(id)">
+                        <input type="text" class="form-control borde" id="user.id" v-model="user.id" placeholder="id"
+                        onkeyup="validNumber(id,9, 'id')">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.name" v-model="user.name"
@@ -37,7 +37,7 @@
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.e-mail" v-model="user.e-mail"
-                            placeholder="e-mail" onkeyup="oneString(id)" onblur="validEmail()">
+                            placeholder="e-mail" onkeyup="validText(id)" onblur="validEmail()">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.address" v-model="user.address"
@@ -45,7 +45,7 @@
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.phone" v-model="user.phone" 
-                        placeholder="phone" onkeyup="validPhone(id,10)">
+                        placeholder="phone" onkeyup="validNumber(id,10,'phone')">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.username" v-model="user.username"
@@ -63,19 +63,29 @@
         </div>
     </div>
     <script>
-        function positiveNumber(id) {
-            //id numbers must be positive
-            idNumber = document.getElementById(id);
-            if (idNumber.value < 0){
-                idNumber.value *= -1;
+        function validNumber(numero,limit,typeOf){
+            //this method formats the length and characters of a valid number
+            let rawNumber = document.getElementById(numero);
+            let validNumber = "";
+            if(rawNumber.value.length>limit){
+                alert("A valid "+ typeOf +" number must have " + limit + " digits");
+                //If the limit is reached, the last character is removed
+                validNumber = rawNumber.value.slice(0,rawNumber.value.length-1);
             }
+            else{
+                const digits = /[0-9]/;  //this is a regex for the digits
+                if (rawNumber.value.charAt(rawNumber.value.length-1).search(digits)!=-1)//if the character at the last position is a digit, keep it
+                    validNumber += rawNumber.value;
+                else //In the other case the last character is removed
+                    validNumber = rawNumber.value.slice(0,rawNumber.value.length-1);
+            }
+            rawNumber.value = validNumber;
         }
         function setUsername() {
-            //This method suggests an username based on the user's name
-        try {
-            const name = oneString("user.name");
-            const middlename = oneString("user.middlename");
-            const lastname = document.getElementById("user.lastname");
+            //This method suggests an username based on the user's names
+            const name = validText("user.name");
+            const middlename = validText("user.middlename");
+            const lastname = validText("user.lastname");
             let username = document.getElementById("user.username"); 
             username.value = name.value.toLowerCase();
             username.value += middlename.value.charAt(0).toLowerCase();
@@ -84,16 +94,18 @@
             if (lastname1.length>1){
                 username.value += lastname1[1].charAt(0).toLowerCase();
             }
-        } 
-        catch (error) {
-            console.error(error);
         }
-        }
-        function oneString(stringWithSpace) {
-            //this method erases spaces in a field
-            let name = document.getElementById(stringWithSpace);
-            let uniqueName = name.value.split(" ");
-            name.value = uniqueName[0];  
+        function validText(rawString){
+            let name = document.getElementById(rawString);
+            name.value.toLowerCase();
+            validName = '';
+            let letters = /[a-z]|[A-Z]/;
+            if (rawString == 'user.e-mail')
+                letters = /[\.-@]|[a-z]|[A-Z]|[0-9]/;
+            if (rawString == 'user.lastname')
+                letters = /[a-z]|[A-Z]|\s/;
+            (name.value.charAt(name.value.length-1).search(letters)!=-1) ? validName += name.value : validName = name.value.slice(0,name.value.length-1);
+            name.value = validName;
             return name;
         }
         function validEmail() {
@@ -102,41 +114,63 @@
             anycharacters +  mandatory(.) + 2 or 3 characters 
             */
             let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            let email = oneString('user.e-mail');
+            let email = validText('user.e-mail');
             email.value = email.value.toLowerCase();
             if (email.value.match(regex)==null){
-                alert("no tiene la estructura de un email valido: usuario@servidor.extension");
+                alert("your input has not the proper e-mail structure: user@server.extension. Please enter a valid e-mail");
             }
         }
-        function nameFormat(upperCaseName){
-            //this method formats names to be capitalized
-            let name = document.getElementById(upperCaseName);
-            name.value = name.value.toLowerCase();
-            name.value = name.value.replace(name.value.charAt(0),name.value.charAt(0).toUpperCase());
-        }
-        function validPhone(phone,limit){
-            //this method formats the length and characters of a valid phone number
-            let phoneNumber = document.getElementById(phone);
-            let validPhone = "";
-            if(phoneNumber.value.length>limit){
-                alert("Un numero de telefono debe tener " + limit + " digitos");
-                //If the limit is reached, the last character is removed
-                validPhone = phoneNumber.value.slice(0,phoneNumber.value.length-1);
+        /*function validTextg(stringWithSpace) {
+            //this method erases spaces in a field
+            let name = document.getElementById(stringWithSpace);
+            validName = '';
+            const letters = /[a-z|[A-Z]]/;
+            if (name.value.charAt(name.value.length-1).search(letters)!=-1){
+                //if the character is any letter, keep it
+                validName += name.value;
             }
             else{
-                //this is a regex for the digits
-                const digits = /[0-9]/;
-                //if the character at the last position is a digit, keep it
-                if (phoneNumber.value.charAt(phoneNumber.value.length-1).search(digits)!=-1){
-                    validPhone += phoneNumber.value;
-                }
-                else{
-                    //In the other case the last character is removed
-                    validPhone = phoneNumber.value.slice(0,phoneNumber.value.length-1);
-                }
+                //In the other case the last character is removed
+                validName = name.value.slice(0,name.value.length-1);
             }
-            phoneNumber.value = validPhone;
+            name.value = validName;
+            return name;
         }
+        */
+        
+        /*
+        //tried this, did not work
+        function nameFormat(upperCaseName){
+            let name = document.getElementById(upperCaseName);
+            name.value.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        };
+        tried this also, 
+        function nameFormat(upperCaseName){
+        let name = document.getElementById(upperCaseName);
+            name.value = name.value.toLowerCase();
+            name.value = name.value.replace(name.value.charAt(0),name.value.charAt(0).toUpperCase());
+            index = 0;
+            while (name.value.indexOf(' ', index)!=-1){
+                index = name.value.indexOf(' ', index);
+                console.log("Indice del espacio: "+ index);
+                index++;
+                name.value = name.value.replace(name.value.charAt(index),name.value.charAt(index).toUpperCase());
+                console.log("nuevo Indice: "+ index);
+            }
+        }
+        tried this also, 
+        function nameFormat(upperCaseName){
+            let name = document.getElementById(upperCaseName).value.toLowerCase();
+            name.value.replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+        }
+        
+        */
+        function nameFormat(upperCaseName){
+            let names = document.getElementById(upperCaseName).value.toLowerCase().split(' ');
+            for (i=0;i<names.length;i++)
+                names[i] = names[i].charAt(0).toUpperCase() + names[i].slice(1);
+            document.getElementById(upperCaseName).value = names.join(' ');
+        }       
         function securePassword(length,specialCharCount) {
             /*this method validates a secure password
             must have at least <length>= 10 characters
@@ -145,20 +179,14 @@
             */
            let regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
            let regex2 = /^(?=.*?[#?!@$ %^&*-]).{2,}/;
-           const alerta = "la contrasena debe tener: \nal menos 10 caracteres, \n"+
-                "al menos una mayuscula, \nal menos una minuscula,\nal menos un digito \n"+
-                "al menos 2 caracteres especiales: # ? ! @ $ % ^ & * - \n";
+           const alerta = "The password must have: \nat least ten characters, \n"+
+                "at least one uppercase letter (A,B,C...), \nat least one lowercase letter (a,b,c...),\n"+
+                "at least one un digit (0,1,2,3,,,) \n"+"at least two special characters: # ? ! @ $ % ^ & * - \n";
             let password = document.getElementById('user.password');
             if( password.value.length<length||(password.value.match(regex))==null||(password.value.match(regex2))==null){
                 alert(alerta);
             }
-            /*
-            else
-                console.log(password.value.match(regex));
-            */
         }
-        
-        
         </script>
 </body>
 </html>
