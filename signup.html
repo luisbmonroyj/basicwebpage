@@ -25,35 +25,36 @@
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.name" v-model="user.name"
-                            placeholder="First name" onkeyup="setUsername()" onblur="nameFormat(id)">
+                            placeholder="Firstname" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.middlename" v-model="user.middlename"
-                            placeholder="Middle Name" onkeyup="setUsername()" onblur="nameFormat(id)">
+                            placeholder="MiddleName" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.lastname" v-model="user.lastname"
-                            placeholder="Last name" onkeyup="setUsername()" onblur="nameFormat(id)">
+                            placeholder="Lastname" onkeyup="setUsername()" onblur="nameFormat(id)">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.e-mail" v-model="user.e-mail"
-                            placeholder="e-mail" onkeyup="validText(id)" onblur="validEmail()">
+                            placeholder="E-mail" onblur="validEmail()">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.address" v-model="user.address"
-                            placeholder="address">
+                            placeholder="Address">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.phone" v-model="user.phone" 
-                        placeholder="phone" onkeyup="validNumber(id,10,'phone')">
+                        placeholder="Phone" onkeyup="validNumber(id,10,'phone')">
                     </div>
                     <div class="row mb-3">
                         <input type="text" class="form-control borde" id="user.username" v-model="user.username"
-                            placeholder="username">
+                            placeholder="Username">
                     </div>
                     <div class="row mb-3">
                         <input type="password" class="form-control borde" id="user.password" v-model="user.password"
                             placeholder="Password" onblur="securePassword(10,2)">
+                        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
                     </div>
                     <div class="row mb-4">
                         <input type="submit" class="btn btn-dark borde" value="Register">
@@ -81,6 +82,41 @@
             }
             rawNumber.value = validNumber;
         }
+        function validText(rawString){
+            let name = document.getElementById(rawString);
+            name.value.toLowerCase();
+            validName = '';
+            let letters = /[a-z]|[A-Z]/;
+            /*
+            if (rawString == 'user.e-mail')
+                letters = /[\.-@]|[a-z]|[A-Z]|[0-9]/;
+            */
+            if (rawString == 'user.lastname')
+                letters = /[a-z]|[A-Z]|\s/;
+            if (name.value.charAt(name.value.length-1).search(letters)!=-1)
+                validName += name.value;
+            else
+                validName = name.value.slice(0,name.value.length-1);
+            name.value = validName;
+            return name;
+        }
+        function validEmail() {
+            //this method validates a correct email format
+            /*anycharacters + optional ("-" or "." ) + anycharacters + mandatory(@) + 
+            anycharacters +  mandatory(.) + 2 or 3 characters 
+            */
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let email = document.getElementById('user.e-mail');
+            email.value = email.value.toLowerCase();
+            if (email.value.match(regex)==null){
+                alert("your input has not the proper e-mail structure: user@server.extension. Please enter a valid e-mail\n"+
+                "The only two valid special characters are . and -\n"+
+                "<user> can have '.' (dot) or - (hyphen), example: user-name.main\n"+
+                "<user> must be followed by @ (at) and then followed by the email provider\n"+
+                "an email provider can have '.' (dot) or - (hyphen): mail-server.com\n"+
+                "<.com> is the extension, extensions can have two or three letters");
+            }
+        }
         function setUsername() {
             //This method suggests an username based on the user's names
             const name = validText("user.name");
@@ -93,31 +129,6 @@
             username.value += lastname1[0].toLowerCase();
             if (lastname1.length>1){
                 username.value += lastname1[1].charAt(0).toLowerCase();
-            }
-        }
-        function validText(rawString){
-            let name = document.getElementById(rawString);
-            name.value.toLowerCase();
-            validName = '';
-            let letters = /[a-z]|[A-Z]/;
-            if (rawString == 'user.e-mail')
-                letters = /[\.-@]|[a-z]|[A-Z]|[0-9]/;
-            if (rawString == 'user.lastname')
-                letters = /[a-z]|[A-Z]|\s/;
-            (name.value.charAt(name.value.length-1).search(letters)!=-1) ? validName += name.value : validName = name.value.slice(0,name.value.length-1);
-            name.value = validName;
-            return name;
-        }
-        function validEmail() {
-            //this method validates a correct email format
-            /*anycharacters + optional ("-" or "." ) + anycharacters + mandatory(@) + 
-            anycharacters +  mandatory(.) + 2 or 3 characters 
-            */
-            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            let email = validText('user.e-mail');
-            email.value = email.value.toLowerCase();
-            if (email.value.match(regex)==null){
-                alert("your input has not the proper e-mail structure: user@server.extension. Please enter a valid e-mail");
             }
         }
         /*function validTextg(stringWithSpace) {
@@ -176,14 +187,24 @@
             must have at least <length>= 10 characters
             must have at least <specialCharCount> = 2 special characters
                 I don't know how to pass the arguments to a regex in JS
+                (?=.*?[#?!@$%^&*-]{2,})
             */
-           let regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
-           let regex2 = /^(?=.*?[#?!@$ %^&*-]).{2,}/;
+           const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?=.*?[#?!@$%^&*-]).{8,}$/;
+           const regexUpper = /[A-Z]/;
+           const regexLower = /^(?=.*?[a-z])/;
+           const regexDigits = /[0-9]/;
+           let regexSpecial = /^(?=.*?[#?!@$%^&*-]{2,})/;
            const alerta = "The password must have: \nat least ten characters, \n"+
                 "at least one uppercase letter (A,B,C...), \nat least one lowercase letter (a,b,c...),\n"+
-                "at least one un digit (0,1,2,3,,,) \n"+"at least two special characters: # ? ! @ $ % ^ & * - \n";
+                "at least one digit (0,1,2,3,,,) \n"+"at least two special characters: # ? ! @ $ % ^ & * - \n";
             let password = document.getElementById('user.password');
-            if( password.value.length<length||(password.value.match(regex))==null||(password.value.match(regex2))==null){
+            console.log(password.value.match(regex));
+            /*console.log(password.value.match("uppercase:"+regexUpper));
+            console.log(password.value.match("lowercase:"+regexLower));
+            console.log(password.value.match("digits:"+regexDigits));
+            console.log(password.value.match("specialchars:"+regexSpecial));
+            */
+            if( password.value.length<length||(password.value.match(regex))==null){//||(password.value.match(regex2))==null){
                 alert(alerta);
             }
         }

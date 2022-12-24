@@ -5,6 +5,7 @@
 
 #cheatsheets
 *.ask
+*.txt
 
 # Node artifact files
 node_modules/
